@@ -23,9 +23,7 @@ public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long autorID;
-	
 	private String nome;
-	
 	private String paisOrigem;
 	
 	// Autor é incluído pelo seu livro

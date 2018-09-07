@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import br.edu.unichristus.livrariadata.controladores.LivroController;
 import br.edu.unichristus.livrariadata.entidades.Autor;
 import br.edu.unichristus.livrariadata.entidades.Livro;
 import br.edu.unichristus.livrariadata.repositorios.AutorRepository;
@@ -65,7 +66,6 @@ public class LivrariaDataApplication implements CommandLineRunner {
 		
 		// 2 - Livros dos autores de um determinado país (somente os títulos de cada livro)
 		System.out.println("LIVROS DE AUTORES BRASILEIROS:");
-		
 		
 		// 3 - Preço médio dos livros cadastrados
 		System.out.println();
