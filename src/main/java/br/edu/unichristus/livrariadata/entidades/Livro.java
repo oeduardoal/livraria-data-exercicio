@@ -42,6 +42,50 @@ public class Livro {
 
 	}
 
+	public Long getLivroID() {
+		return livroID;
+	}
+
+	public void setLivroID(Long livroID) {
+		this.livroID = livroID;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public int getNumeroPaginas() {
+		return numeroPaginas;
+	}
+
+	public void setNumeroPaginas(int numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public String getAutorName() {
+		return autor.getNome();
+	}
+	
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
 	@Override
 	public String toString() {
 		return "Livro [livroID=" + livroID + ", titulo=" + titulo + ", numeroPaginas=" + numeroPaginas + ", preco="

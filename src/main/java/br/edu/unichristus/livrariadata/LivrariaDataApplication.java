@@ -1,12 +1,16 @@
 package br.edu.unichristus.livrariadata;
 
 import java.math.BigDecimal;
-
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import antlr.collections.List;
+import br.edu.unichristus.livrariadata.controladores.AutorController;
 import br.edu.unichristus.livrariadata.controladores.LivroController;
 import br.edu.unichristus.livrariadata.entidades.Autor;
 import br.edu.unichristus.livrariadata.entidades.Livro;
@@ -21,6 +25,12 @@ public class LivrariaDataApplication implements CommandLineRunner {
 	
 	@Autowired
 	private AutorRepository repoAutores;
+	
+	@Autowired
+	private AutorController autorController;
+	
+	@Autowired
+	private LivroController livroController;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(LivrariaDataApplication.class, args);
@@ -66,20 +76,34 @@ public class LivrariaDataApplication implements CommandLineRunner {
 		
 		// 2 - Livros dos autores de um determinado país (somente os títulos de cada livro)
 		System.out.println("LIVROS DE AUTORES BRASILEIROS:");
+		livroController.buscarPeloPais("Brasil").forEach(System.out::println);
 		
 		// 3 - Preço médio dos livros cadastrados
 		System.out.println();
 		System.out.print("PREÇO MÉDIO DOS LIVROS: ");
+		System.out.println(livroController.obterPrecoMedio());
 		
 		
 		// 4 - Listar os NOMES dos autores de um determinado país
 		System.out.println();
 		System.out.println("AUTORES DOS ESTADOS UNIDOS:");
-		
+		autorController.buscarPais("Brasil").forEach(System.out::println);
 		
 		// 6 - Listar autores com seus livros - Listagem contendo nome de cada autor autor e o título dos seus livros
 		System.out.println();
 		System.out.println("LISTA DE AUTORES COM SEUS RESPECTIVOS LIVROS:");
-
+		
+		Map<String, java.util.List<Livro>> agrupadosPorAutor = livroController.buscarTodos().stream().collect(Collectors.groupingBy(Livro::getAutorName));
+		
+		agrupadosPorAutor.forEach(
+				(autor, livros) -> 
+				{
+					System.out.println(autor);
+					livros.forEach(
+							l -> System.out.printf("     %s%n", l.getTitulo()));
+				}
+		);
+		
+		
 	}
 }

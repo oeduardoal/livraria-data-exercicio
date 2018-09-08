@@ -37,8 +37,37 @@ public class Autor {
 	}
 	
 	public Autor() {};
-	
-	
-	
 
+
+	public Long getAutorID() {
+		return autorID;
+	}
+
+	public void setAutorID(Long autorID) {
+		this.autorID = autorID;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getPaisOrigem() {
+		return paisOrigem;
+	}
+
+	public void setPaisOrigem(String paisOrigem) {
+		this.paisOrigem = paisOrigem;
+	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
 }
